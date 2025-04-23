@@ -52,5 +52,6 @@ executable(
     duktape,
     curl,
     libarchive,
-  ]
+  ],
+  install: true
 )
