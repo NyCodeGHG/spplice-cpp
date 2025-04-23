@@ -7,3 +7,4 @@ qt5build
 deps
 dist
 setup/Output
+.cache
