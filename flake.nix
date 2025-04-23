@@ -14,5 +14,21 @@
     packages = forEachSystem (pkgs: {
       ssplice-cpp = pkgs.callPackage ./nix/package.nix { };
     });
+    devShells = forEachSystem (pkgs: {
+      default = pkgs.mkShell {
+        nativeBuildInputs = with pkgs; [
+          meson
+          pkg-config
+          ninja
+        ];
+        buildInputs = with pkgs; [
+          kdePackages.qtbase
+          duktape
+          curl
+          libarchive
+          kdePackages.qtwayland
+        ];
+      };
+    });
   };
 }
