@@ -1,8 +1,12 @@
 project('spplice', 'cpp')
 
-qt = import('qt5')
-
-qt_dep = dependency('qt5', modules: ['Widgets', 'Concurrent'])
+if get_option('USE_QT6') 
+  qt = import('qt6')
+  qt_dep = dependency('qt6', modules: ['Core', 'Widgets', 'Gui', 'Concurrent'])
+else
+  qt = import('qt5')
+  qt_dep = dependency('qt5', modules: ['Widgets', 'Concurrent'])
+endif
 
 duktape = dependency('duktape')
 curl = dependency('libcurl')

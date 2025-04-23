@@ -2,7 +2,7 @@
   lib,
   stdenv,
   meson,
-  libsForQt5,
+  kdePackages,
   duktape,
   curl,
   libarchive,
@@ -18,15 +18,19 @@ stdenv.mkDerivation {
 
   nativeBuildInputs = [
     meson
-    libsForQt5.wrapQtAppsHook
+    kdePackages.wrapQtAppsHook
     pkg-config
     ninja
   ];
 
   buildInputs = [
-    libsForQt5.qtbase
+    kdePackages.qtbase
     duktape
     curl
     libarchive
+  ];
+
+  mesonFlags = [
+    (lib.mesonBool "USE_QT6" true)
   ];
 }
